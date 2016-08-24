@@ -27,20 +27,21 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+// se declaran los drawerLayaout con su repectivo id 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
+// se declara la navegacion entre las vistas que hace q se despliege la lista
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
     public void onBackPressed() {
+            // un progreso que hace se deslice la lista con  la informacion que trae
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -51,14 +52,14 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
+// se crean las opciones del menu
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
+// selecciona la opcion  del item
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-
+// se muestra la seleccion del item en la lista  y llama cada fragment al precionarle encima de cada item
         int id = item.getItemId();
 
         if (id == R.id.nav_primero) {
@@ -107,7 +108,7 @@ public class MainActivity extends AppCompatActivity
 
             }
         }
-
+// esconde  la lista despues de seleccionado el  item 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
