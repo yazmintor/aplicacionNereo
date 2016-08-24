@@ -39,17 +39,17 @@ public class DetalleHorario extends Activity {
         final String diaselecionado = ((Dia)getIntent().getExtras().get("dia")).getNombredia();
 
         dia = (TextView) findViewById(R.id.textViewDia);
-        ((TextView) findViewById(R.id.textViewDiaTitulo)).setText(diaselecionado);//mostrarDetalle();
+        ((TextView) findViewById(R.id.textViewDiaTitulo)).setText(diaselecionado);//mostrarDetalle de las materias asociadas al dia();
 
 
-        RequestQueue queuehor = Volley.newRequestQueue(this);
-        String url = getString(R.string.url1);
+        RequestQueue queuehor = Volley.newRequestQueue(this); //Almacena las peticiones http desde la aplicacióon hacie servidores externos
+        String url = getString(R.string.url1); //Servicio web
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.e("TAG2",response+"Response");
                 final ArrayList<Dia> listadia = new ArrayList<>();
-
+                    // Array que almacena los datos del detalle de las clases
                 JsonArray jobjhor=new JsonParser().parse(response).getAsJsonArray();
                 for (JsonElement sitem : jobjhor) {
                     if(diaselecionado.equals(sitem.getAsJsonObject().get("DIA_NOMBRE").getAsString())){
@@ -71,7 +71,7 @@ public class DetalleHorario extends Activity {
                         listadia.add(i);
                     }
                 }
-
+                // Adaptador que crea la interfaz con los datos
                 addapterhor = new MateriaDiaAdapter(DetalleHorario.this, R.id.listPrueba, listadia);
                 GridView objListView = (GridView) DetalleHorario.this.findViewById(R.id.listPrueba);
                 objListView.setAdapter(addapterhor);
@@ -82,7 +82,7 @@ public class DetalleHorario extends Activity {
                 Log.e("TAG2",error.getMessage()+"Response");
             }
         });
-        queuehor.add(request);
+        queuehor.add(request); 
     }
 
 }
