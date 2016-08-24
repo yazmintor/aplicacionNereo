@@ -18,11 +18,12 @@ import java.util.ArrayList;
  * Created by Sammy on 6/08/2016.
  */
 public class DiaAdapter extends ArrayAdapter<Dia> {
-
+// se inicializan las variables
     private final Context contexto;
     private final ArrayList<Dia> array_dias;
     Dia diaActual;
     public DiaAdapter(Context context, ArrayList<Dia> array_dias) {
+        // se hace una adaptacion  de arralist
         super(context, -1, array_dias);
         this.contexto = context;
         this.array_dias = array_dias;
@@ -35,7 +36,7 @@ public class DiaAdapter extends ArrayAdapter<Dia> {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         View layoutDia = inflater.inflate(R.layout.itemlayout1, parent, false);
-
+// se hace el array para cada dia q este actual  con la posicion 
         TextView diaTextView = (TextView) layoutDia.findViewById(R.id.textViewDia);
 
         diaActual = array_dias.get(position);
