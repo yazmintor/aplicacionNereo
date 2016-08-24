@@ -26,7 +26,7 @@ public class FirstFragment extends Fragment {
 
       webView=(WebView) myView.findViewById(R.id.webView2);
     webView.getSettings().setJavaScriptEnabled(true);
-        String url="http://www.jcgrafficdesigns.net/Nereo/noticia1.php";
+        String url="http://10.20.4.15/Webservicesnereo/noticia1.php";
         webView.loadUrl(url);
         webView.setWebViewClient(new WebViewClient(){
 

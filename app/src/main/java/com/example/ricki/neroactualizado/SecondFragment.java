@@ -1,4 +1,4 @@
-﻿package com.example.ricki.neroactualizado;
+package com.example.ricki.neroactualizado;
 
 import android.annotation.TargetApi;
 import android.app.Fragment;
@@ -31,7 +31,7 @@ import cz.msebera.android.httpclient.entity.mime.Header;
 public class SecondFragment extends Fragment{
     ListView lista1;
     Button boton;
-    
+
  View myView;
     @Nullable
     @Override
