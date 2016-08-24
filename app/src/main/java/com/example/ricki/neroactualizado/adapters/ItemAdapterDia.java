@@ -27,12 +27,13 @@ public class ItemAdapterDia extends ArrayAdapter<Dia> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = convertView;
-
+// se hace la adaptacion de cada textview y le asigne una informacion 
         if (v == null) {
             LayoutInflater vi;
             vi = LayoutInflater.from(getContext());
             v = vi.inflate(R.layout.itemlayout1, null);
         }
+        // se hace la adaptacion de cada textview y le asigne una informacion 
         Dia p = getItem(position);
 
         TextView dia = (TextView) v.findViewById(R.id.textViewNombredia);
@@ -40,39 +41,43 @@ public class ItemAdapterDia extends ArrayAdapter<Dia> {
         if (dia != null ) {
             dia.setText(p.getNombredia ());
         }
-
+        // se hace la adaptacion de cada textview y le asigne una informacion 
         TextView asignat = (TextView) v.findViewById(R.id.TextViewAsignatura);
 
         if (asignat != null  ) {
             asignat.setText(p.getNomasig());
         }
+        // se hace la adaptacion de cada textview y le asigne una informacion 
         TextView grupo = (TextView) v.findViewById(R.id.textViewGrupo);
 
         if (grupo != null  ) {
             grupo.setText(p.getGrupocod ());
         }
-
+        // se hace la adaptacion de cada textview y le asigne una informacion 
         TextView hora = (TextView) v.findViewById(R.id.textViewHora);
 
         if (hora != null  ) {
             hora.setText(p.getHora ());
         }
-
+        // se hace la adaptacion de cada textview y le asigne una informacion 
         TextView sede = (TextView) v.findViewById(R.id.textViewSede);
 
         if (sede != null  ) {
             sede.setText(p.getSedenombre ());
         }
+        // se hace la adaptacion de cada textview y le asigne una informacion 
         TextView edificio = (TextView) v.findViewById(R.id.textViewEdificio);
 
         if (edificio != null  ) {
             edificio.setText(p.getEdinombre ());
         }
+        // se hace la adaptacion de cada textview y le asigne una informacion 
         TextView salon = (TextView) v.findViewById(R.id.textViewSalon);
 
         if (salon != null  ) {
             salon.setText(p.getSalnombre ());
         }
+        // se hace la adaptacion de cada textview y le asigne una informacion 
         TextView docente = (TextView) v.findViewById(R.id.textViewDocente);
 
         if (docente != null  ) {
