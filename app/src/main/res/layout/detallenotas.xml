@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+         android:layout_width="match_parent"
+         android:layout_height="45dp"
+         android:visibility="visible"
+         android:background="@drawable/esquinas_planas"
+         android:textAppearance="?android:attr/textAppearanceMedium"
+         android:textColor="#ffff"
+         android:textStyle="bold"
+         android:text="Hola tu"
+         android:textAlignment="center"
+         android:gravity="center"
+         android:id="@+id/textViewAsigna"
+         android:layout_marginTop="10dp"
+         android:layout_gravity="center_horizontal"
+         android:paddingLeft="5dp"
+         android:paddingRight="5dp" />
+
+    <TextView
+        android:layout_width="110dp"
+        android:layout_height="45dp"
+        android:visibility="visible"
+        android:background="@drawable/esquinas_planas"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ffff"
+        android:text=" % "
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:id="@+id/textViewcabecera1"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="15dp" />
+
+    <TextView
+        android:layout_width="110dp"
+        android:layout_height="45dp"
+        android:visibility="visible"
+        android:background="@drawable/esquinas_planas"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ffff"
+        android:text="Nota"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:id="@+id/textViewcabecera2"
+        android:layout_marginLeft="205dp"
+        android:layout_marginTop="-46dp" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="44dp"
+        android:visibility="visible"
+        android:background="@drawable/esquinas_redondas"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:id="@+id/Porcentaje"
+        android:singleLine="false"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="5dp"
+        android:allowUndo="false"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="44dp"
+        android:visibility="visible"
+        android:background="@drawable/esquinas_redondas"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:id="@+id/Nota"
+        android:layout_marginLeft="210dp"
+        android:layout_marginTop="-45dp"
+        android:textStyle="bold" />
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="44dp"
+        android:visibility="visible"
+        android:background="@drawable/esquinas_redondas"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:id="@+id/Porcentaje1"
+        android:singleLine="false"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="5dp"
+        android:allowUndo="false"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="44dp"
+        android:visibility="visible"
+        android:background="@drawable/esquinas_redondas"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:id="@+id/Nota1"
+        android:layout_marginLeft="210dp"
+        android:layout_marginTop="-45dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="44dp"
+        android:visibility="visible"
+        android:background="@drawable/esquinas_redondas"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:id="@+id/Porcentaje2"
+        android:singleLine="false"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="5dp"
+        android:allowUndo="false"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="44dp"
+        android:visibility="visible"
+        android:background="@drawable/esquinas_redondas"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:id="@+id/Nota2"
+        android:layout_marginLeft="210dp"
+        android:layout_marginTop="-45dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="44dp"
+        android:visibility="visible"
+        android:background="@drawable/esquinas_redondas"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:id="@+id/Porcentaje3"
+        android:singleLine="false"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="5dp"
+        android:allowUndo="false"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="44dp"
+        android:visibility="visible"
+        android:background="@drawable/esquinas_redondas"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:id="@+id/Nota3"
+        android:layout_marginLeft="210dp"
+        android:layout_marginTop="-45dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="44dp"
+        android:visibility="visible"
+        android:background="@drawable/esquinas_redondas"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:id="@+id/Porcentaje4"
+        android:singleLine="false"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="5dp"
+        android:allowUndo="false"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="44dp"
+        android:visibility="visible"
+        android:background="@drawable/esquinas_redondas"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:id="@+id/Nota4"
+        android:layout_marginLeft="210dp"
+        android:layout_marginTop="-45dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="44dp"
+        android:visibility="visible"
+        android:background="@drawable/esquinas_redondas"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:id="@+id/Porcentaje5"
+        android:singleLine="false"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="5dp"
+        android:allowUndo="false"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="44dp"
+        android:visibility="visible"
+        android:background="@drawable/esquinas_redondas"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:id="@+id/Nota5"
+        android:layout_marginLeft="210dp"
+        android:layout_marginTop="-45dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="44dp"
+        android:visibility="visible"
+        android:background="@drawable/esquinas_redondas"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:id="@+id/Porcentaje6"
+        android:singleLine="false"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="5dp"
+        android:allowUndo="false"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="44dp"
+        android:visibility="visible"
+        android:background="@drawable/esquinas_redondas"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:id="@+id/Nota6"
+        android:layout_marginLeft="210dp"
+        android:layout_marginTop="-45dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="44dp"
+        android:visibility="visible"
+        android:background="@drawable/esquinas_redondas"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:id="@+id/Porcentaje7"
+        android:singleLine="false"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="5dp"
+        android:allowUndo="false"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="44dp"
+        android:visibility="visible"
+        android:background="@drawable/esquinas_redondas"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:id="@+id/Nota7"
+        android:layout_marginLeft="210dp"
+        android:layout_marginTop="-45dp"
+        android:textStyle="bold" />
+
+</LinearLayout>

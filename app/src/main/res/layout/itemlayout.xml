@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+     <TextView
+        android:layout_width="210dp"
+        android:layout_height="45dp"
+        android:visibility="visible"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Medium Text"
+        android:gravity="center"
+        android:id="@+id/textViewNombre"
+        android:shadowColor="#8a6603"
+        android:layout_marginTop="15dp"
+        android:singleLine="false"
+        android:textStyle="bold"
+        android:background="@drawable/esquinas_redondas" />
+
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="45dp"
+        android:visibility="visible"
+        android:background="@drawable/esquinas_redondas"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:id="@+id/textViewAcum"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="-45dp" />
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="45dp"
+        android:visibility="visible"
+        android:background="@drawable/esquinas_redondas"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:id="@+id/textViewDefini"
+        android:layout_marginLeft="278dp"
+        android:layout_marginTop="-45.5dp" />
+</LinearLayout>

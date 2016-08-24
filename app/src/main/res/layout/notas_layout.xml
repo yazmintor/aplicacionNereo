@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical" android:layout_width="match_parent"
+              android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="210dp"
+        android:layout_height="45dp"
+        android:visibility="visible"
+        android:background="@drawable/esquinas_planas"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#ffff"
+        android:text="          ASIGNATURA         "
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:id="@+id/Asignatura"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="55dp"
+        android:layout_height="45dp"
+        android:visibility="visible"
+        android:background="@drawable/esquinas_planas"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#ffff"
+        android:text="ACUM"
+        android:textStyle="bold"
+        android:textAlignment="gravity"
+        android:gravity="center"
+        android:id="@+id/textView"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="-45dp"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="55dp"
+        android:layout_height="45dp"
+        android:visibility="visible"
+        android:background="@drawable/esquinas_planas"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#ffff"
+        android:text="DEFIN"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:id="@+id/textView2"
+        android:layout_marginLeft="280dp"
+        android:layout_marginTop="-45dp" />
+
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="283dp"
+        android:id="@+id/gridView"
+        android:gravity="center"
+        android:layout_weight="0.82" />
+
+    <Button
+        android:layout_width="146dp"
+        android:layout_height="wrap_content"
+        android:text="Generar Reporte"
+        android:id="@+id/generar"
+        android:layout_gravity="center_horizontal" />
+
+
+</LinearLayout>

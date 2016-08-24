@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_primero"
+            android:icon="@drawable/ic_noticias"
+            android:title="Noticias" />
+        <item
+            android:id="@+id/nav_segundo"
+            android:icon="@drawable/ic_datos_personales"
+            android:title="Datos Personales" />
+        <item
+            android:id="@+id/nav_tercero"
+            android:icon="@drawable/ic_horario"
+            android:title="Horario" />
+        <item
+            android:id="@+id/nav_notas"
+            android:icon="@drawable/ic_notas"
+           android:title="Notas" />
+        <item
+            android:id="@+id/nav_stream"
+            android:icon="@drawable/ic_noticias"
+            android:title="Emisora La UD" />
+    </group>
+
+
+</menu>
