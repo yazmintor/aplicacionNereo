@@ -52,7 +52,7 @@ public class ThirdFragment extends Fragment{
             @Override
             public void onClick(View v) {
 
-                Uri uriUrl = Uri.parse("http://10.20.4.15/Webservicesnereo/horariopdf.php");
+                Uri uriUrl = Uri.parse("http://10.20.4.149/Webservicesnereo/horariopdf.php");
                 //Especificamos la accion a realizar con el ACTION_VIEW
                 //para que elija lo mas razonable
                 Intent intent = new Intent(Intent.ACTION_VIEW, uriUrl);
