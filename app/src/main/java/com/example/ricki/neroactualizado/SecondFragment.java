@@ -29,6 +29,7 @@ import cz.msebera.android.httpclient.entity.mime.Header;
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class SecondFragment extends Fragment{
+   // se declaran las variables a utilizar 
     ListView lista1;
     Button boton;
 
@@ -44,13 +45,16 @@ public class SecondFragment extends Fragment{
     }
 
     public  void ObtDatos(){
+        
         AsyncHttpClient client= new AsyncHttpClient();
+        // se declara la url y llama el json 
         final String url="http://www.jcgrafficdesigns.net/Nereo/consultanereo.php";
         client.post(url, new AsyncHttpResponseHandler () {
             @Override
             public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
                 if (statusCode==200){
                     Item i = new Item();
+                    // carga la infromacion que trae le json 
                     CargaLista(ObtdatosJSON(new String(responseBody)));
 
                 }
@@ -64,11 +68,13 @@ public class SecondFragment extends Fragment{
     }
 
     public void CargaLista(ArrayList<String> datos){
+        // se crea un array adapter para llenar los datos del json y se adaptan al listview
         ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,datos);
         lista1.setAdapter(adapter);
     }
 
     public ArrayList<String> ObtdatosJSON(String response){
+        // se crea el array list  para llenar la informacion de la url 
         ArrayList<String > listado=new ArrayList<String>();
         try {
             JSONArray jsonarray=new JSONArray(response);
