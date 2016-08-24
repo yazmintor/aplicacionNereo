@@ -19,10 +19,10 @@ public class DetalleNotas extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detallenotas);
 
-        inicializar();
-        mostrarDetalle();
+        inicializar(); // Se inicializan todos los componentes de la interfaz
+        mostrarDetalle(); // Muestra los datos envaidas desde el fragment Notas
     }
-
+    
     private void inicializar(){
         tvasignatura = (TextView) findViewById(R.id.textViewAsigna);
         porce1 = (TextView) findViewById(R.id.Porcentaje);
@@ -62,7 +62,7 @@ public class DetalleNotas extends Activity {
         porceexa.setText(recogerParametroPorceexa());
         notaexa.setText(recogerParametroNotaexa());
     }
-
+//Todos los métodos de recogerParametro(), capturan el dato enviado desde el fragment Notas
     private String recogerParametro(){
 
         Item detalleNotas;
