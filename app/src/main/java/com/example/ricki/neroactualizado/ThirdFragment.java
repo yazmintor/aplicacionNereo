@@ -35,6 +35,7 @@ import java.util.ArrayList;
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class ThirdFragment extends Fragment{
+    // se declarn las variables a utilizar
     View myView;
     Button bt_generar;
     ItemAdapterDia addapterhor;
@@ -45,13 +46,13 @@ public class ThirdFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
         myView=inflater.inflate(R.layout.main_thirdf,container,false);
-
+// se declara la informacion que va traer cada uno 
         bt_generar = (Button) myView.findViewById(R.id.btn_generarpdf);
 
         bt_generar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+// se llama  la url que va traer el json con la informacion
                 Uri uriUrl = Uri.parse("http://10.20.4.149/Webservicesnereo/horariopdf.php");
                 //Especificamos la accion a realizar con el ACTION_VIEW
                 //para que elija lo mas razonable
@@ -59,13 +60,14 @@ public class ThirdFragment extends Fragment{
                 startActivity(intent);
             }
         });
-
+//se hace la adaptacion al listview  con la informacion 
         lista_dias = (ListView) myView.findViewById(R.id.listView);
-
+// se adapta un arralist de dia 
         arrayDias = new ArrayList<Dia>();
 
         RequestQueue queuehor = Volley.newRequestQueue(getActivity());
         String url = getString(R.string.url1);
+        // se verifican los metodos 
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -88,6 +90,7 @@ public class ThirdFragment extends Fragment{
                         arrayDias.add(new Dia(sitem.getAsJsonObject().get("DIA_NOMBRE").getAsString()));
                     }
                 }
+                //  se hace un item adapter de dia y se adapta la informacion
                 addapterhor = new ItemAdapterDia(getActivity(), R.id.listView, arrayDias);
                 ListView objListView = (ListView) ThirdFragment.this.myView.findViewById(R.id.listView);
                 objListView.setAdapter(addapterhor);
@@ -101,7 +104,7 @@ public class ThirdFragment extends Fragment{
         queuehor.add(request);
 
         lista_dias.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
+// se declara el metodo para darle click en la informacion y envie a otra venta o activity
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 diaseleccionado = arrayDias.get(position);
@@ -110,6 +113,7 @@ public class ThirdFragment extends Fragment{
 
                 Intent intent = new Intent(getActivity(), DetalleHorario.class);
                 intent.putExtra("dia", arrayDias.get(position));
+                // se inicia la actividad se envia la informacion 
                 startActivity(intent);
             }
         });
