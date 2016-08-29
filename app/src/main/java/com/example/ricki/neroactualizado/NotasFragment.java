@@ -39,15 +39,14 @@ public class NotasFragment extends Fragment{
     Button bt_generar;
     @Nullable
     @Override
-    //llama el contenido del fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         myView=inflater.inflate(R.layout.notas_layout,container,false);
         bt_generar = (Button) myView.findViewById(R.id.generar);
         bt_generar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-// se llama la url donde esta almacenado el json
-                Uri uriUrl = Uri.parse("http://10.20.4.149/Webservicesnereo/notaspdf.php");
+
+                Uri uriUrl = Uri.parse("http://10.20.0.149/Webservicesnereo/notaspdf.php?codEstudiante=20051085002");
                 //Especificamos la accion a realizar con el ACTION_VIEW
                 //para que elija lo mas razonable
                 Intent intent = new Intent(Intent.ACTION_VIEW, uriUrl);
@@ -55,44 +54,46 @@ public class NotasFragment extends Fragment{
             }
         });
         RequestQueue queue = Volley.newRequestQueue(getActivity ());
-        // se asigana la url a un string
         String url =getString(R.string.url);
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.e("TAG2",response+"Response");
-                // se llama el array que hace que recorra el item 
                 final ArrayList<Item> listaitems = new ArrayList<>();
                 JsonArray jobj=new JsonParser ().parse(response).getAsJsonArray();
                 for (JsonElement sitem : jobj) {
-                    Item i = new Item();
-                    i.setNombre(sitem.getAsJsonObject().get("NOMBRE_ESPACIO").getAsString());
-                    i.setAcum(sitem.getAsJsonObject().get("NOTA_ACUM").getAsString());
-                    i.setDefini(sitem.getAsJsonObject().get("NOTA_DEF").getAsString());
-                    i.setPorce1(sitem.getAsJsonObject().get("PPAR").getAsString());
-                    i.setNota1(sitem.getAsJsonObject().get("NOTA_PAR1").getAsString());
-                    i.setPorce2(sitem.getAsJsonObject().get("PPAR2").getAsString());
-                    i.setNota2(sitem.getAsJsonObject().get("NOTA_PAR2").getAsString());
-                    i.setPorce3(sitem.getAsJsonObject().get("PPAR3").getAsString());
-                    i.setNota3(sitem.getAsJsonObject().get("NOTA_PAR3").getAsString());
-                    i.setPorce4(sitem.getAsJsonObject().get("PPAR4").getAsString());
-                    i.setNota4(sitem.getAsJsonObject().get("NOTA_PAR4").getAsString());
-                    i.setPorce5(sitem.getAsJsonObject().get("PPAR5").getAsString());
-                    i.setNota5(sitem.getAsJsonObject().get("NOTA_PAR5").getAsString());
-                    i.setPorce6(sitem.getAsJsonObject().get("PPAR6").getAsString());
-                    i.setNota6(sitem.getAsJsonObject().get("NOTA_PAR6").getAsString());
-                    i.setPorcelab(sitem.getAsJsonObject().get("PLAB").getAsString());
-                    i.setNotalab(sitem.getAsJsonObject().get("NOTA_LAB").getAsString());
-                    i.setPorceexa(sitem.getAsJsonObject().get("PEXA").getAsString());
-                    i.setNotaexa(sitem.getAsJsonObject().get("NOTA_EXA").getAsString());
-                    listaitems.add(i);
 
+                        Item i = new Item();
+                        i.setNombre(sitem.getAsJsonObject().get("NOMBRE_ESPACIO").getAsString());
+                    try {
+                        i.setAcum(sitem.getAsJsonObject().get("NOTA_ACUM").getAsString());
+                        i.setDefini(sitem.getAsJsonObject().get("NOTA_DEF").getAsString());
+                        i.setPorce1(sitem.getAsJsonObject().get("PPAR").getAsString());
+                        i.setNota1(sitem.getAsJsonObject().get("NOTA_PAR1").getAsString());
+                        i.setPorce2(sitem.getAsJsonObject().get("PPAR2").getAsString());
+                        i.setNota2(sitem.getAsJsonObject().get("NOTA_PAR2").getAsString());
+                        i.setPorce3(sitem.getAsJsonObject().get("PPAR3").getAsString());
+                        i.setNota3(sitem.getAsJsonObject().get("NOTA_PAR3").getAsString());
+                        i.setPorce4(sitem.getAsJsonObject().get("PPAR4").getAsString());
+                        i.setNota4(sitem.getAsJsonObject().get("NOTA_PAR4").getAsString());
+                        i.setPorce5(sitem.getAsJsonObject().get("PPAR5").getAsString());
+                        i.setNota5(sitem.getAsJsonObject().get("NOTA_PAR5").getAsString());
+                        i.setPorce6(sitem.getAsJsonObject().get("PPAR6").getAsString());
+                        i.setNota6(sitem.getAsJsonObject().get("NOTA_PAR6").getAsString());
+                        i.setPorcelab(sitem.getAsJsonObject().get("PLAB").getAsString());
+                        i.setNotalab(sitem.getAsJsonObject().get("NOTA_LAB").getAsString());
+                        i.setPorceexa(sitem.getAsJsonObject().get("PEXA").getAsString());
+                        i.setNotaexa(sitem.getAsJsonObject().get("NOTA_EXA").getAsString());
+
+                    }
+                    catch (NullPointerException e){
+
+                        System.out.println("valores nulos");
+                    }
+                    listaitems.add(i);
                 }
-                
-                // se envia la informacion a un listview de la lista  de item
                  addaptera = new ItemAdapter(getActivity (), R.id.gridView, listaitems);
                final GridView objListView = (GridView) myView.findViewById(R.id.gridView);
-                // se adapta el listview
                 objListView.setAdapter(addaptera);
                 objListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -117,7 +118,7 @@ public class NotasFragment extends Fragment{
                         intent.putExtra("notalab", listaitems.get(position));
                         intent.putExtra("porceexa", listaitems.get(position));
                         intent.putExtra("notaexa", listaitems.get(position));
-// se inicia la otra actividad que envia la informacion al precionar 
+
                         startActivity(intent);
                     }
 

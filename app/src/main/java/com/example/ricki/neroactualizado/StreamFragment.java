@@ -25,7 +25,7 @@ import java.io.IOException;
 
 public class StreamFragment extends Fragment
         implements SurfaceHolder.Callback, MediaPlayer.OnPreparedListener,
-        MediaController.MediaPlayerControl {// Implementa controladores de audio
+        MediaController.MediaPlayerControl {
 
      private static String TAG = "MainActivity ";
      View myView;
@@ -34,26 +34,26 @@ public class StreamFragment extends Fragment
      private MediaPlayer mediaPlayer;
      private MediaController mediaController;
      private Handler handler = new Handler();
-        // Se definen los componentes que están en la interfaz fragment_stream.xml
+
     private ProgressDialog progress;
 
-     String url2 = "http://200.69.103.51:8000/laud"; // Servicio web de la emisora
+     String url2 = "http://200.69.103.51:8000/laud";
 
      @Override
      public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
          myView = inflater.inflate(R.layout.fragment_stream, container, false);
 
-         surfaceView = (SurfaceView) myView.findViewById(R.id.surfaceview); //Instancia del SurfaceHolder
+         surfaceView = (SurfaceView) myView.findViewById(R.id.surfaceview);
 
-         surfaceHolder = surfaceView.getHolder(); //
+         surfaceHolder = surfaceView.getHolder();
          //Toast.makeText(getActivity(), "Cargando Emisora...", Toast.LENGTH_LONG).show();
          surfaceHolder.addCallback(this);
 
          surfaceView.setOnTouchListener(new View.OnTouchListener() {
              @Override
              public boolean onTouch(View v, MotionEvent event) {
-                 if (mediaController != null) { // Si el componente existe entonces le asigna un tiempo para que se muestre en forma permanente
-                     mediaController.show(500000); //Duración del media controller en la pantalla 
+                 if (mediaController != null) {
+                     mediaController.show(500000);
                  }
                  return false;
              }
@@ -72,10 +72,10 @@ public class StreamFragment extends Fragment
          mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
          mediaPlayer.setOnPreparedListener(this);
          try {
-                 mediaPlayer.setDataSource(url2); //Lee el servicio web y trae el audio
+                 mediaPlayer.setDataSource(url2);
                  mediaPlayer.prepare();
 
-                 mediaController = new MediaController(getActivity()); //Instanciando en componente media controller
+                 mediaController = new MediaController(getActivity());
 
              } catch (IOException e) {
          e.printStackTrace();
@@ -98,21 +98,21 @@ public class StreamFragment extends Fragment
              mediaPlayer.release();
              mediaPlayer = null;
          }
-     } //Destruye el hilo del audio cuando cambia de opción en el menú
+     }
 
      @Override
      public void onPrepared(MediaPlayer mp) {
-         mediaPlayer.start(); //Inicia la reproducción de sonido después de elegir la opción desde el menú
+         mediaPlayer.start();
      Toast.makeText(getActivity(),
      "Sonido en Vivo", Toast.LENGTH_SHORT).show();
 
-     mediaController.setMediaPlayer(this);// Asigna lo leído por el media player, al componente media controller
-     mediaController.setAnchorView(surfaceView); 
+     mediaController.setMediaPlayer(this);
+     mediaController.setAnchorView(surfaceView);
      handler.post(new Runnable() {
 
      public void run() {
-         mediaController.setEnabled(true); //Habilita el componente de botones que controlan el audio star, pause y stop
-         mediaController.show(); // Muestra en la pantalla la botonera
+         mediaController.setEnabled(true);
+         mediaController.show();
          }
          });
      }
@@ -120,17 +120,17 @@ public class StreamFragment extends Fragment
     @Override
      public void start() {
 
-     mediaPlayer.start(); // Da la funcionalidad al botón de iniciar la reproducción de audio
+     mediaPlayer.start();
      }
 
      @Override
      public void pause() {
-     mediaPlayer.pause(); // Pausa la reproducción de audio
+     mediaPlayer.pause();
      }
 
      @Override
      public int getDuration() {
-     return mediaPlayer.getDuration(); //Muestra el tiempo que dura encendido el audio
+     return mediaPlayer.getDuration();
      }
 
      @Override
@@ -145,7 +145,7 @@ public class StreamFragment extends Fragment
 
      @Override
      public boolean isPlaying() {
-        return mediaPlayer.isPlaying(); //Evalúa si el audio está en reproducción
+        return mediaPlayer.isPlaying();
     }
 
     @Override
@@ -155,21 +155,50 @@ public class StreamFragment extends Fragment
 
      @Override
      public boolean canPause() {
-     return true; // Habilita la funcionalidad de pausar la reproducción de audio
+     return true;
      }
 
      @Override
      public boolean canSeekBackward() {
-     return false;      //Deshabilita la funcionalidad del botón de devolver el audio
+     return false;
      }
 
      @Override
      public boolean canSeekForward() {
-     return false; // Deshabilita la funcionalidad del botón de adelantar el audio
+     return false;
      }
 
      @Override
      public int getAudioSessionId() {
          return mediaPlayer.getAudioSessionId();
-     }// Mantiene iniciada la sesión de audio
+     }
+
+    public void descargar(View view){
+        progress=new ProgressDialog(getActivity());
+        progress.setMessage("Descargando algo....");
+        progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        // progress.setIndeterminate(true);
+        progress.setProgress(0);
+        progress.show();
+
+        final int totalProgressTime = 100;
+        final Thread t = new Thread() {
+            @Override
+            public void run() {
+                int jumpTime = 0;
+
+                while(jumpTime < totalProgressTime) {
+                    try {
+                        jumpTime += 5;
+                        progress.setProgress(jumpTime);
+                        sleep(200);
+                    }
+                    catch (InterruptedException e) {
+                        Log.e(TAG, e.getMessage());
+                    }
+                }
+            }
+        };
+        t.start();
+    }
 }

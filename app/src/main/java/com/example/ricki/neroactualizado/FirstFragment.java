@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ListView;
 
 /**
  * Created by ricki on 29/07/2016.
@@ -22,11 +23,12 @@ public class FirstFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         myView=inflater.inflate(R.layout.first_layout,container,false);
+        //lista1 = (ListView) myView.findViewById(R.id.listnoticias);
         //return super.onCreateView(inflater, container, savedInstanceState);
-
+/*
       webView=(WebView) myView.findViewById(R.id.webView2);
     webView.getSettings().setJavaScriptEnabled(true);
-        String url="http://10.20.4.149/Webservicesnereo/noticia1.php";
+        String url="http://10.20.0.149/Webservicesnereo/noticia1.php";
         webView.loadUrl(url);
         webView.setWebViewClient(new WebViewClient(){
 
@@ -36,7 +38,7 @@ public class FirstFragment extends Fragment {
 
             }
 
-        });
+        });*/
        return myView;
     }
 }

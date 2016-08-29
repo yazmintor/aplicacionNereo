@@ -29,7 +29,6 @@ import cz.msebera.android.httpclient.entity.mime.Header;
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class SecondFragment extends Fragment{
-   // se declaran las variables a utilizar 
     ListView lista1;
     Button boton;
 
@@ -45,16 +44,13 @@ public class SecondFragment extends Fragment{
     }
 
     public  void ObtDatos(){
-        
         AsyncHttpClient client= new AsyncHttpClient();
-        // se declara la url y llama el json 
-        final String url="http://www.jcgrafficdesigns.net/Nereo/consultanereo.php";
+        final String url="http://10.20.0.149/Webservicesnereo/consultanereo.php?codEstudiante=20051085002";
         client.post(url, new AsyncHttpResponseHandler () {
             @Override
             public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
                 if (statusCode==200){
                     Item i = new Item();
-                    // carga la infromacion que trae le json 
                     CargaLista(ObtdatosJSON(new String(responseBody)));
 
                 }
@@ -68,13 +64,11 @@ public class SecondFragment extends Fragment{
     }
 
     public void CargaLista(ArrayList<String> datos){
-        // se crea un array adapter para llenar los datos del json y se adaptan al listview
         ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,datos);
         lista1.setAdapter(adapter);
     }
 
     public ArrayList<String> ObtdatosJSON(String response){
-        // se crea el array list  para llenar la informacion de la url 
         ArrayList<String > listado=new ArrayList<String>();
         try {
             JSONArray jsonarray=new JSONArray(response);
@@ -82,9 +76,11 @@ public class SecondFragment extends Fragment{
             for(int i=0;i<jsonarray.length();i++){
                 texto="Código: "+jsonarray.getJSONObject(i).getString("EST_COD")+"\n \n Identificación:  "+
                         jsonarray.getJSONObject(i).getString("EST_NRO_IDEN")+"\n \n Nombre del Estudiante: "+
+
                         jsonarray.getJSONObject(i).getString("EST_NOMBRE")+"\n \n Carrera: "+
-                        jsonarray.getJSONObject(i).getString("CODIGOCRA")+"\t - "+
-                        jsonarray.getJSONObject(i).getString("CRANOM")+ "\n \n Acuerdo: "+
+// Seria en llamar EST_CRA_COD Y CRA_NOMRE
+                        jsonarray.getJSONObject(i).getString("EST_CRA_COD")+" - "+
+                        jsonarray.getJSONObject(i).getString("CRA_NOMBRE")+ "\n \n Acuerdo: "+
                         jsonarray.getJSONObject(i).getString("EST_ACUERDO")+"\n \n Número Pénsum: "+
                         jsonarray.getJSONObject(i).getString("EST_PEN_NRO")+"\n \n Tipo de Plan: "+
                         jsonarray.getJSONObject(i).getString("TIPO_PLAN")+"\n \n Correo Institucional: "+

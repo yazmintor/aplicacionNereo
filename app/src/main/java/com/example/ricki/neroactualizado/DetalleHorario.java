@@ -39,39 +39,48 @@ public class DetalleHorario extends Activity {
         final String diaselecionado = ((Dia)getIntent().getExtras().get("dia")).getNombredia();
 
         dia = (TextView) findViewById(R.id.textViewDia);
-        ((TextView) findViewById(R.id.textViewDiaTitulo)).setText(diaselecionado);//mostrarDetalle de las materias asociadas al dia();
+        ((TextView) findViewById(R.id.textViewDiaTitulo)).setText(diaselecionado);//mostrarDetalle();
 
 
         RequestQueue queuehor = Volley.newRequestQueue(this); //Almacena las peticiones http desde la aplicacióon hacie servidores externos
-        String url = getString(R.string.url1); //Servicio web
+        String url = getString(R.string.url1);
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.e("TAG2",response+"Response");
                 final ArrayList<Dia> listadia = new ArrayList<>();
-                    // Array que almacena los datos del detalle de las clases
+
                 JsonArray jobjhor=new JsonParser().parse(response).getAsJsonArray();
                 for (JsonElement sitem : jobjhor) {
                     if(diaselecionado.equals(sitem.getAsJsonObject().get("DIA_NOMBRE").getAsString())){
                         Dia i = new Dia();
 
-                        i.setDianombre(sitem.getAsJsonObject().get("DIA_NOMBRE").getAsString());
-                        i.setNombredia(sitem.getAsJsonObject().get("DIA_NOMBRE").getAsString());
-                        i.setNomasig(sitem.getAsJsonObject().get("ASI_NOMBRE").getAsString());
-                        i.setCodigocra(sitem.getAsJsonObject().get("CODIGOCRA").getAsString());
-                        i.setGrupocod(sitem.getAsJsonObject().get("GRUPO").getAsString());
-                        i.setHora(sitem.getAsJsonObject().get("HOR_HORA").getAsString());
-                        i.setHoras(sitem.getAsJsonObject().get("HOR_SAL_ID_ESPACIO").getAsString());
-                        i.setSedenombre(sitem.getAsJsonObject().get("SED_NOM").getAsString());
-                        i.setEdinombre(sitem.getAsJsonObject().get("EDI_NOMBRE").getAsString());
-                        i.setSalnombre(sitem.getAsJsonObject().get("SAL_NOMBRE").getAsString());
-                        i.setDocente(sitem.getAsJsonObject().get("DOCENTE").getAsString());
-                        i.setApellido(sitem.getAsJsonObject().get("APELLIDO").getAsString());
 
+                            i.setDianombre(sitem.getAsJsonObject().get("DIA_NOMBRE").getAsString());
+                            i.setNombredia(sitem.getAsJsonObject().get("DIA_NOMBRE").getAsString());
+                            i.setNomasig(sitem.getAsJsonObject().get("ASI_NOMBRE").getAsString());
+                            i.setCodigocra(sitem.getAsJsonObject().get("CODIGOCRA").getAsString());
+                            i.setGrupocod(sitem.getAsJsonObject().get("GRUPO").getAsString());
+                            i.setHora(sitem.getAsJsonObject().get("HOR_HORA").getAsString());
+                           // i.setHoras(sitem.getAsJsonObject().get("HOR_SAL_ID_ESPACIO").getAsString());
+                            i.setSedenombre(sitem.getAsJsonObject().get("SED_NOMBRE").getAsString());
+                            i.setEdinombre(sitem.getAsJsonObject().get("EDI_NOMBRE").getAsString());
+                            i.setSalnombre(sitem.getAsJsonObject().get("SAL_NOMBRE").getAsString());
+                        try {
+                            i.setDocente(sitem.getAsJsonObject().get("DOCENTE").getAsString());
+                            i.setApellido(sitem.getAsJsonObject().get("APELLIDO").getAsString());
+
+
+                        }
+                        catch (NullPointerException e){
+                            System.out.println(" valores nulos");
+
+
+                        }
                         listadia.add(i);
                     }
                 }
-                // Adaptador que crea la interfaz con los datos
+
                 addapterhor = new MateriaDiaAdapter(DetalleHorario.this, R.id.listPrueba, listadia);
                 GridView objListView = (GridView) DetalleHorario.this.findViewById(R.id.listPrueba);
                 objListView.setAdapter(addapterhor);
@@ -82,7 +91,7 @@ public class DetalleHorario extends Activity {
                 Log.e("TAG2",error.getMessage()+"Response");
             }
         });
-        queuehor.add(request); 
+        queuehor.add(request);
     }
 
 }
