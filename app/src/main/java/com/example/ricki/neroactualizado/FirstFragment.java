@@ -13,32 +13,60 @@ import android.webkit.WebViewClient;
 import android.widget.ListView;
 
 /**
- * Created by ricki on 29/07/2016.
+ * Created by Sammy Torres on 27/08/2016.
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class FirstFragment extends Fragment {
- View myView;
-    WebView webView;
+public class NoticiasFragment extends Fragment {
+    ItemAdapterNoticia addaptern;
+    View myView;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        myView=inflater.inflate(R.layout.first_layout,container,false);
-        //lista1 = (ListView) myView.findViewById(R.id.listnoticias);
-        //return super.onCreateView(inflater, container, savedInstanceState);
-/*
-      webView=(WebView) myView.findViewById(R.id.webView2);
-    webView.getSettings().setJavaScriptEnabled(true);
-        String url="http://10.20.0.149/Webservicesnereo/noticia1.php";
-        webView.loadUrl(url);
-        webView.setWebViewClient(new WebViewClient(){
+        myView=inflater.inflate(R.layout.primeroa,container,false);
+        RequestQueue queue = Volley.newRequestQueue(getActivity ());
+        String url =getString(R.string.url3);
 
-            public boolean shouldOverrideUrlLoading(WebView view, String url){
-             view.loadUrl(url);
-                return true;
+        StringRequest request1 = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.e("TAG2",response+"Response");
 
+                ArrayList<Noticias> listanoti = new ArrayList<>();
+                JsonArray jobjnoti = new JsonParser ().parse(response).getAsJsonArray();
+                for (JsonElement sitem : jobjnoti) {
+
+                    Noticias j = new Noticias();
+
+                    try {
+                        j.setNombrenoti(sitem.getAsJsonObject().get("nombre").getAsString());
+                        j.setDescripcion(sitem.getAsJsonObject().get("descripcion").getAsString());
+                        j.setEnlace(sitem.getAsJsonObject().get("enlace").getAsString());
+                        j.setFecha_radica(sitem.getAsJsonObject().get("fecha_radicacion").getAsString());
+                        j.setImagen(sitem.getAsJsonObject().get("imagen").getAsString());
+
+                    }
+                    catch (NullPointerException e){
+
+                        System.out.println("Valores Nulos");
+                    }
+                    listanoti.add(j);
+                }
+                addaptern = new ItemAdapterNoticia(getActivity(), R.id.gridView2, listanoti);
+                final GridView objListView = (GridView) myView.findViewById(R.id.gridView);
+                objListView.setAdapter(addaptern);
+
+    }
+
+}
+                , new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("TAG2",error.getMessage()+"Response");
             }
-
-        });*/
-       return myView;
+        });
+        queue.add(request1);
+        return myView;
     }
 }
+
