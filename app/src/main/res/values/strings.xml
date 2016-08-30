@@ -8,6 +8,8 @@
     <string name="url">http://10.20.4.149/Webservicesnereo/consultar_notasparciales.php</string>
     <string name="url1">http://10.20.4.149/Webservicesnereo/consultar_horarios.php</string>
     <string name="url2">http://200.69.103.51:8000/laud</string>
+    <string name="url3">http://10.20.0.149/urano/index.php?data=sj7574MlJOsg4LjjeAOJP5CBi1dRh84M-gX_Z-i_0Ol7TIQjdwZpa36rW8uzbT71_GMpcRAta2MSZGt9OmeQN3O0c9_4iv7A6ODAQz8nzk3-L-wp9KXARJdYvqggsPUb</string>
+    
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
