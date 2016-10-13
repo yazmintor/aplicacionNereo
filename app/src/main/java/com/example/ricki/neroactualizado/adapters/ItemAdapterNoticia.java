@@ -45,7 +45,8 @@ public class ItemAdapterNoticia extends ArrayAdapter<Noticias> {
         }
        TextView tv3 = (TextView) noti.findViewById(R.id.enlace);
         if (tv3 != null) {
-            tv3.setText(n.getEnlace());
+            tv3.setText(Html.fromHtml(""+ "<a href=" + n.getEnlace() + ">Ver más...</a>"));
+            tv3.setMovementMethod(LinkMovementMethod.getInstance());
         }
 
         TextView tv4 = (TextView) noti.findViewById(R.id.fecha_publica);
